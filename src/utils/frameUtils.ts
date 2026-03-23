@@ -9,7 +9,10 @@ export const getFramePath = (frameIndex: number): string => {
   
   const paddedIndex = localIndex.toString().padStart(3, '0');
   
-  // Trỏ về Cloudflare CDN vì folder local đã chuyển ra Desktop
+  // OPTION A: Tải từ Vercel Edge (Cực nhanh và nhẹ - KHUYÊN DÙNG)
+  // return `/frame-webp/frame${folderNum}/Frame${folderNum}_${paddedIndex}.webp`;
+
+  // OPTION B: Tải từ Cloudflare CDN hiện tại (Đang sử dụng JPG)
   const cdnUrl = "https://solitary-salad-9c8e.nguyenhuyanh912548.workers.dev";
   return `${cdnUrl}/frame${folderNum}/Frame${folderNum}_${paddedIndex}.jpg`;
 };
