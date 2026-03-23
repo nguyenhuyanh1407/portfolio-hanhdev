@@ -46,8 +46,8 @@ export const useImagePreloader = () => {
     };
 
     const loadSequence = async () => {
-      // 1. Priority Load (First 30 frames to show the 1st section ASAP)
-      const PRIORITY_COUNT = Math.min(30, TOTAL_FRAMES);
+      // 1. Priority Load (First 200 frames to show the 1st section ASAP)
+      const PRIORITY_COUNT = Math.min(200, TOTAL_FRAMES);
       const priorityPromises = [];
       
       for (let i = 0; i < PRIORITY_COUNT; i++) {
@@ -90,7 +90,7 @@ export const useImagePreloader = () => {
     };
   }, []);
 
-  const priorityTotal = Math.min(30, TOTAL_FRAMES);
+  const priorityTotal = Math.min(200, TOTAL_FRAMES);
   const displayProgress = isLoaded ? 100 : Math.round((Math.min(loadedCount, priorityTotal) / priorityTotal) * 100);
 
   return { imagesRef, loadedCount, progress: displayProgress, isLoaded };
